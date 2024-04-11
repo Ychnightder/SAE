@@ -34,7 +34,6 @@ public class GrapheLArcs extends graphe.Graphe {
                sb.append(", ");
            }
         }
-
         sb.append("}");
         return sb.toString();
     }
@@ -86,8 +85,6 @@ public class GrapheLArcs extends graphe.Graphe {
     }
 
 
-
-
     /**
      * @param src
      * @param dest
@@ -106,41 +103,28 @@ public class GrapheLArcs extends graphe.Graphe {
 
 
 
-    /**
-     * @param noeud
-     */
+
     @Override
     public void ajouterSommet(String noeud) {
 
     }
-
-    /**
-     * @param sommet
-     * @return
-     */
     @Override
     public boolean contientSommet(String sommet) {
         return false;
     }
-
-
-
-    /**
-     * @param noeud
-     */
     @Override
     public void oterSommet(String noeud) {
 
     }
-
-    /**
-     * @param source
-     * @param destination
-     */
     @Override
     public void oterArc(String source, String destination) {
 
     }
+
+
+
+
+
     public class Arc {
         private String sommet ;
         private String succeseur ;

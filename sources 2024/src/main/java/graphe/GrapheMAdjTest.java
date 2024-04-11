@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GrapheMAdjTest {
 
         public static  void main(String[] args) {
-                 graphe.GrapheMAdj g = new graphe.GrapheMAdj();
+                GrapheMAdj g = new GrapheMAdj();
 
                  g.ajouterSommet("A");
                  g.ajouterSommet("B");
