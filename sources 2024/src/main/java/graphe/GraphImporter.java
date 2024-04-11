@@ -51,7 +51,7 @@ public class GraphImporter {
         return distance;
     }
 	
-	public static Arc importer(String filePath, IGraphe g)  {
+	public static  Arc importer(String filePath, IGraphe g)  {
 		File file = new File(filePath);
 		return importer(file, g);
 	}

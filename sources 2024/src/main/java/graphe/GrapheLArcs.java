@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class GrapheLArcs extends graphe.Graphe {
+public class GrapheLArcs extends Graphe {
     Arc Arc ;
     // ici la premiere classe a crée (mohamed qui a ecrit ça )
     private List <Arc> arcs;
     public GrapheLArcs() {
-        arcs  = new ArrayList<>();// la j'hesite a faire une class interne Arc et donc la cette partie marchera c'est pour verifier si deux sommets peuvent etre bon (mohamed)
+        arcs  = new ArrayList<>();
+        // la j'hesite a faire une class interne Arc et donc la cette partie marchera c'est pour verifier si deux sommets peuvent etre bon (mohamed)
     }
 
 

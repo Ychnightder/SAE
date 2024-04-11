@@ -1,4 +1,4 @@
-package graphe;
+package main.java.graphe;
 
 
 import main.java.graphe.Interface.IGraphe;

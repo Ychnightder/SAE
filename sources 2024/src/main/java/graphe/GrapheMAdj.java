@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GrapheMAdj extends graphe.Graphe {
+public class GrapheMAdj extends Graphe {
 	private int[][] matrice;
     private Map<String, Integer> indices;
     
