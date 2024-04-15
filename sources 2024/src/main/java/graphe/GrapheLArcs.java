@@ -26,9 +26,11 @@ public class GrapheLArcs extends Graphe {
     @Override
     public String toString() {
         StringBuilder sb  = new StringBuilder("{");
+
         for (int i = 0; i < arcs.size(); i++) {
-            sb.append(Arc.toString());
-           if( i==arcs.size() ){
+            sb.append(arcs.get(i).toString());
+
+           if( i >=  arcs.size()-1 ){
                sb.append("");
            }
            else {
@@ -51,6 +53,10 @@ public class GrapheLArcs extends Graphe {
         }
         return sommet ;
     }
+    public int gettaillelistesommet (){
+        int t = getSommets().size(); ;
+        return t ;
+    }
 
     /**
      * @param sommet
@@ -65,6 +71,9 @@ public class GrapheLArcs extends Graphe {
             }
         }
         return succ;
+    }
+    public int  gettaillesucc (String sommet ){
+        return getSucc(sommet).size();
     }
 
     /**
@@ -122,11 +131,9 @@ public class GrapheLArcs extends Graphe {
 
     }
 
+    public static class Arc {
 
 
-
-
-    public class Arc {
         private String sommet ;
         private String succeseur ;
         private int  Valeur;
@@ -134,7 +141,12 @@ public class GrapheLArcs extends Graphe {
         public Arc (String Source , String Dest , int  Valeur) {
             this.sommet = Source;
             this.succeseur = Dest;
-            this.Valeur = Valeur;
+            if (Valeur <0) {
+                throw new IllegalArgumentException("la valeur doit etre positive ");
+            }
+            else {
+                this.Valeur = Valeur;
+            }
         }
 
         public String getSource() {
@@ -155,7 +167,19 @@ public class GrapheLArcs extends Graphe {
             return "(" + sommet + ", " + succeseur + ")";
         }
     }
+    public int gettaille (){
+        int t = arcs.size();
+        return t ;
+    }
 
 
 
 }
+
+
+
+
+
+
+
+
