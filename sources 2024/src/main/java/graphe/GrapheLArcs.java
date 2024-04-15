@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class GrapheLArcs extends Graphe {
-    Arc Arc ;
+
     // ici la premiere classe a crée (mohamed qui a ecrit ça )
     private List <Arc> arcs;
     public GrapheLArcs() {
@@ -32,7 +32,7 @@ public class GrapheLArcs extends Graphe {
                sb.append("");
            }
            else {
-               sb.append(", ");
+               sb.append(",");
            }
         }
         sb.append("}");
