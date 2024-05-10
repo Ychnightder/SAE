@@ -48,9 +48,8 @@ public class GrapheLArcs extends Graphe {
     public List<String> getSommets() {
         List <String> sommet = new ArrayList<String>();
         for (Arc Arc : arcs) {
-
               String source = Arc.getSource();
-              if (sommet.contains(source)) {
+              if (!sommet.contains(source)) {
                   sommet.add(new String(source));
               }
         }
