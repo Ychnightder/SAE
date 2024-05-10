@@ -1,6 +1,7 @@
 package main.java.graphe;
 import main.java.graphe.Interface.PasDansLaListeException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -47,10 +48,13 @@ public class GrapheLArcs extends Graphe {
     public List<String> getSommets() {
         List <String> sommet = new ArrayList<String>();
         for (Arc Arc : arcs) {
-            sommet.add(new String(Arc.getSource()));
-//              String source = Arc.getSource();
-//              sommet.add(new String(source));
+
+              String source = Arc.getSource();
+              if (sommet.contains(source)) {
+                  sommet.add(new String(source));
+              }
         }
+        Collections.sort(sommet);
         return sommet ;
     }
     public int gettaillelistesommet (){
