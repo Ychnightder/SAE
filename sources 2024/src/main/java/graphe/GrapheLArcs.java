@@ -49,9 +49,17 @@ public class GrapheLArcs extends Graphe {
         List <String> sommet = new ArrayList<String>();
         for (Arc Arc : arcs) {
               String source = Arc.getSource();
+              String destination = Arc.getDest();
+
               if (!sommet.contains(source)) {
                   sommet.add(new String(source));
               }
+              if (!sommet.contains(destination)){
+                  sommet.add(new String(destination));
+              }
+
+
+              System.out.println(Arc);
         }
         Collections.sort(sommet);
         return sommet ;

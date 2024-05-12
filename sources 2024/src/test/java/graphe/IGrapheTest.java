@@ -1,11 +1,15 @@
-package graphe;
+package test.java.graphe;
 
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import main.java.graphe.Arc;
 import main.java.graphe.GraphImporter;
@@ -40,7 +44,7 @@ class IGrapheTest {
 			+ "D-C(5), D-E(3), D-B(3), "
 			+ "E-G(3), E-C(1), E-H(7), "
 			+ "I-H(10), "
-			+ "J:,"
+			+ "J:, "
 			+ "G-B(2), G-F(1), "
 			+ "F:, "
 			+ "H-G(2), H-F(4), "
@@ -59,6 +63,7 @@ class IGrapheTest {
 	void tester3_1(IGraphe g) {
 		List<String> sommets_exp = List.of("A","B","C","D","E","F","G","H","I","J");
 		List<String> sommets = new ArrayList<String>(g.getSommets()); // pas forcement triee
+
 		Collections.sort(sommets);
 		assertEquals(sommets_exp, sommets);
 		assertTrue(g.contientSommet("C"));
@@ -121,7 +126,7 @@ class IGrapheTest {
 //                Path file1 = iterator1.next();
 //                Path file2 = iterator2.next();
 //
-////                IGraphe g = new GrapheHHAdj();
+//               IGraphe g = new GrapheHHAdj();
 //                Arc arc = GraphImporter.importer(file1.toFile(), g);
 //
 //                List<Integer> listeEntiers = new ArrayList<>();
@@ -169,6 +174,8 @@ class IGrapheTest {
 //            }
 //        } catch (IOException e) {
 //            System.out.println("Erreur lors de l'acces aux dossiers: " + e.getMessage());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
 //        }
 //    }
 

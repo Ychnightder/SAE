@@ -38,10 +38,6 @@ public class ListeAdj extends Graphe {
                 sb.append(",");
             }
         }
-
-
-
-
         sb.append("}");
         return sb.toString();
     }
