@@ -24,17 +24,19 @@ public interface IGraphe extends IGrapheConst {
 	        // extrait le noeud source et te ":" si nécessaire dans le nom
 	        String src = elements[0].replaceAll(":", "");
 	        ajouterSommet(src);
-	        if (elements.length == 1)
+			if (elements.length == 1)
 	        	continue; // pas de destination
 	        String target = elements[1];
-	        if (!target.isEmpty()) {
+			if (!target.isEmpty()) {
 	             String dest = target.substring(0, target.indexOf('('));
 	             int val = Integer.parseInt(target
 	                	.substring(target.indexOf('(') + 1,
 	                				   target.indexOf(')')));
 	             ajouterSommet(dest);
 	             ajouterArc(src, dest, val);
+
 	        }
+
 	    }
 
 	}

@@ -56,11 +56,15 @@ class IGrapheTest {
 	void exo3_1Maths() {
 		for (IGraphe g : graphes) {
 			g.peupler(g31a);
+
 			tester3_1(g);
+
 		}
+
 	}
 
 	void tester3_1(IGraphe g) {
+
 		List<String> sommets_exp = List.of("A","B","C","D","E","F","G","H","I","J");
 		List<String> sommets = new ArrayList<String>(g.getSommets()); // pas forcement triee
 

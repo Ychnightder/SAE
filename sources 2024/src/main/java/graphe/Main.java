@@ -17,7 +17,7 @@ public class Main {
         System.out.println(graphe);
 
         ListeAdj l = new ListeAdj(graphe);
-        System.out.println(l);
+        System.out.println(g1.getValeur());
 
 
 
