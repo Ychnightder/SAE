@@ -29,7 +29,7 @@ public class ListeAdj extends Graphe {
             sb.append(",");
             for (int j = 0; j < g.gettaillesucc(sommet); ++j) {
                 sb.append(g.getSucc(sommet).get(j));
-                }
+            }
 
             if( i >=  tailleSommet-1 ){
                 sb.append("");
@@ -38,10 +38,6 @@ public class ListeAdj extends Graphe {
                 sb.append(",");
             }
         }
-
-
-
-
         sb.append("}");
         return sb.toString();
     }
@@ -113,4 +109,5 @@ public class ListeAdj extends Graphe {
     }
 
 }
+
 

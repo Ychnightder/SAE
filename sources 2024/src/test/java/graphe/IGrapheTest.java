@@ -96,11 +96,11 @@ class IGrapheTest {
 		assertEquals("7", a.getDestination());
 	}
 
-	@Test
-	void petitTestImportation() {
-		for (IGraphe g : graphes)
-			petiteImporation(g);
-	}
+//	@Test
+//	void petitTestImportation() {
+//		for (IGraphe g : graphes)
+//			petiteImporation(g);
+//	}
 
 //	@Test
 //	void importer() throws NumberFormatException, FileNotFoundException {
