@@ -1,8 +1,7 @@
-package main.java.graphe;
+package main.java.graphe.tousGraphes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 public class ListeAdj extends Graphe {

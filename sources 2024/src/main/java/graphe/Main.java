@@ -1,5 +1,7 @@
 package main.java.graphe;
 
+import main.java.graphe.tousGraphes.ListeAdj;
+
 public class Main {
     public static void main(String[] args) {
 //

@@ -1,5 +1,5 @@
-package main.java.graphe;
-import main.java.graphe.Interface.PasDansLaListeException;
+package main.java.graphe.tousGraphes;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

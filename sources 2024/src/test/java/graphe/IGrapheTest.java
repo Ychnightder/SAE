@@ -3,16 +3,14 @@ package graphe;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 
-import main.java.graphe.*;
 import main.java.graphe.Interface.IGraphe;
+import main.java.graphe.tousGraphes.arc.Arc;
+import main.java.graphe.tousGraphes.GraphImporter;
+import main.java.graphe.tousGraphes.GrapheLArcs;
+import main.java.graphe.tousGraphes.GrapheMAdj;
+import main.java.graphe.tousGraphes.ListeAdj;
 import org.junit.jupiter.api.Test;
 
 class IGrapheTest {

@@ -1,4 +1,4 @@
-package main.java.graphe;
+package main.java.graphe.tousGraphes.arc;
 
 public  class Arc {
 
