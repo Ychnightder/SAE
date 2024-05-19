@@ -3,21 +3,22 @@ package graphe;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.stream.Collectors;
 
-import main.java.graphe.Arc;
-import main.java.graphe.GraphImporter;
-import main.java.graphe.GrapheLArcs;
-import main.java.graphe.GrapheMAdj;
+import main.java.graphe.*;
 import main.java.graphe.Interface.IGraphe;
 import org.junit.jupiter.api.Test;
 
 class IGrapheTest {
 	private final IGraphe[] graphes = {
 			new GrapheLArcs(),
-//            new GrapheLAdj(),
+	          new ListeAdj(),
 			new GrapheMAdj(),
 //            new GrapheHHAdj()
 	};
@@ -96,12 +97,13 @@ class IGrapheTest {
 		assertEquals("7", a.getDestination());
 	}
 
-//	@Test
-//	void petitTestImportation() {
-//		for (IGraphe g : graphes)
-//			petiteImporation(g);
-//	}
+	@Test
+	void petitTestImportation() {
+		for (IGraphe g : graphes)
+			petiteImporation(g);
+	}
 
+//
 //	@Test
 //	void importer() throws NumberFormatException, FileNotFoundException {
 //		String graphesRep = "graphes";
@@ -121,7 +123,7 @@ class IGrapheTest {
 //                Path file1 = iterator1.next();
 //                Path file2 = iterator2.next();
 //
-////                IGraphe g = new GrapheHHAdj();
+//                IGraphe g = new GrapheLArcs();
 //                Arc arc = GraphImporter.importer(file1.toFile(), g);
 //
 //                List<Integer> listeEntiers = new ArrayList<>();

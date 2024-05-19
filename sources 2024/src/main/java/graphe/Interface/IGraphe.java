@@ -8,6 +8,7 @@ import java.util.List;
 // ajouterArc ajoute les sommets s'ils ne sont pas deja presents
 // oterSommet ne fait rien si le sommet n'est pas dans le graphe
 // oterArc leve une IllegalArgumentException si l'arc n'est pas present
+
 public interface IGraphe extends IGrapheConst {
 	void ajouterSommet(String noeud);
 	void ajouterArc(String source, String destination, Integer valeur);

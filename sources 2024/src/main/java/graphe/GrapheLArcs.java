@@ -28,20 +28,6 @@ public class GrapheLArcs extends Graphe {
     }
     @Override
     public String toString() {
-//        StringBuilder sb  = new StringBuilder("{");
-//
-//        for (int i = 0; i < arcs.size(); i++) {
-//            sb.append(arcs.get(i).toString());
-//
-//           if( i >=  arcs.size()-1 ){
-//               sb.append("");
-//           }
-//           else {
-//               sb.append(",");
-//           }
-//        }
-//        sb.append("}");
-//        return sb.toString();
         StringBuilder sb  = new StringBuilder();
         sort();
         sortSommet();

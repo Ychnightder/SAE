@@ -1,83 +1,123 @@
 package main.java.graphe;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class ListeAdj extends Graphe {
-
-    GrapheLArcs.Arc arc ;
-    private int nbSommet;
-    int tailleSommet;
+//                   sommet   +  sommetDestination et valeur
+    private HashMap < String ,   HashMap<String,     Integer> > ListAdj;
 
     public ListeAdj(){
-
-
+        this.ListAdj = new HashMap<>();
     }
 
-//    public String toString(){
-//        StringBuilder sb = new  StringBuilder("{");
-//        sb.append(nbSommet);
-//        sb.append(",");
-//        for (int i = 0; i < tailleSommet;  ++i) {
-//            sb.append(g.getSommets().get(i));// ici on a eu faux quand on a mit indexof ça retourne l'index et non la valeur
-//            String sommet = g.getSommets().get(i);
-//            sb.append(",");
-//            sb.append(g.gettaillesucc(sommet));
-//            sb.append(",");
-//            for (int j = 0; j < g.gettaillesucc(sommet); ++j) {
-//                sb.append(g.getSucc(sommet).get(j));
-//            }
-//
-//            if( i >=  tailleSommet-1 ){
-//                sb.append("");
-//            }
-//            else {
-//                sb.append(",");
-//            }
-//        }
-//        sb.append("}");
-//        return sb.toString();
-//    }
+    public String toString(){
+       StringBuilder sb = new  StringBuilder();
+        List<String> sommets = getSommets();
+        boolean premier = true;
+
+            for (String sommetCourant : sommets){
+                if (!premier){
+                    sb.append(", ");
+                }
+                else{
+                    premier = false;
+                }
+               List<String> listSucc = getSucc(sommetCourant);
+                if (listSucc.isEmpty()){
+                    sb.append(sommetCourant).append(":");
+                }{
+                    for(int i = 0; listSucc.size() > i; i++){
+                        String successeur = listSucc.get(i);
+                        if (i > 0) {
+                            sb.append(", ");
+                        }
+                        sb.append(sommetCourant).append("-").append(successeur).append("(").append(getValuation(sommetCourant, successeur)).append(")");
+                    }
+                }
+
+            }
+
+       return sb.toString();
+    }
 
     @Override
-    public void ajouterSommet(String noeud) {}
+    public void ajouterSommet(String noeud) {
+        ListAdj.putIfAbsent(noeud, new HashMap<>());
+    }
 
     @Override
-    public void ajouterArc(String source, String destination, Integer valeur) {}
+    public void ajouterArc(String source, String destination, Integer valeur) {
+        if (valeur < 0) {
+            throw new IllegalArgumentException("Valuation negative");
+        }
+
+        if (this.ListAdj.containsKey(source) && this.ListAdj.get(source).containsKey(destination)) {
+            throw new IllegalArgumentException("Arc deja present");
+        }
+
+        this.ajouterSommet(source);
+        this.ajouterSommet(destination);
+        this.ListAdj.get(source).put(destination, valeur);
+    }
 
     @Override
     public void oterSommet(String noeud) {
-
+        if (!this.ListAdj.containsKey(noeud)) {
+            return;
+        }
+        this.ListAdj.remove(noeud);
+        for(HashMap<String ,Integer> resteDeLaListe : this.ListAdj.values()){
+                resteDeLaListe.remove(noeud);
+        }
     }
 
     @Override
     public void oterArc(String source, String destination) {
-
+        if (!this.ListAdj.containsKey(source) || !this.ListAdj.get(source).containsKey(destination)) {
+            throw new IllegalArgumentException("Arc deja present");
+        }
+        this.ListAdj.get(source).remove(destination);
     }
 
     @Override
     public List<String> getSommets() {
-        return List.of();
+       ArrayList listS = new ArrayList<>(this.ListAdj.keySet());
+//       listS.sort(null);
+        return listS;
     }
 
     @Override
     public List<String> getSucc(String sommet) {
-        return List.of();
+        if (!this.ListAdj.containsKey(sommet)) {
+            return new ArrayList<>();
+        }
+        ArrayList listSucc = new ArrayList<>(this.ListAdj.get(sommet).keySet());
+        return listSucc;
+    }
+
+    public int  gettaillesucc (String sommet ){
+        return getSucc(sommet).size();
     }
 
     @Override
     public boolean contientSommet(String sommet) {
-        return false;
+        return this.ListAdj.containsKey(sommet);
     }
 
     @Override
     public boolean contientArc(String src, String dest) {
-        return false;
+        return this.ListAdj.containsKey(src) && this.ListAdj.get(src).containsKey(dest);
     }
 
     @Override
     public int getValuation(String src, String dest) {
-        return 0;
+        if (!this.ListAdj.containsKey(src) || !this.ListAdj.get(src).containsKey(dest)) {
+            return 0;
+        }
+        return this.ListAdj.get(src).get(dest);
     }
 
 }
