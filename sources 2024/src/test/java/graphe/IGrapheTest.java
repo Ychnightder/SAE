@@ -11,11 +11,11 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import main.java.graphe.tousGraphes.GrapheLArcs;
 import main.java.graphe.Interface.IGraphe;
 import main.java.graphe.dijkstra.Dijkstra;
 import main.java.graphe.tousGraphes.arc.Arc;
 import main.java.graphe.tousGraphes.GraphImporter;
-import main.java.graphe.tousGraphes.GrapheLArcs;
 import main.java.graphe.tousGraphes.GrapheMAdj;
 import main.java.graphe.tousGraphes.ListeAdj;
 import org.junit.jupiter.api.Test;
@@ -23,8 +23,8 @@ import org.junit.jupiter.api.Test;
 class IGrapheTest {
 	private final IGraphe[] graphes = {
 			new ListeAdj(),
-			new GrapheLArcs(),
 			new GrapheMAdj(),
+			new GrapheLArcs()
 //            new GrapheHHAdj()
 	};
 
@@ -91,15 +91,15 @@ class IGrapheTest {
 	}
 
 	void petiteImporation(IGraphe g) {
-		Arc a = GraphImporter.importer("./graphes/full/g-101-1.txt", g);//("D:/graphes/orig/g-10-1.txt", g);
-//		assertEquals("1-3(5), "
-//				+ "10-3(3), 2-1(5), 2-3(5), 2-5(4), "
-//				+ "3-4(4), 3-5(4), 4-10(1), 4-2(1), 4-7(3), "
-//				+ "5-9(4), 6-2(3), 6-3(4), 7-3(2),"
-//				+ " 8-2(4), 8-6(1), 9-2(4)",
-//				g.toString());
-//		assertEquals("5", a.getSource());
-//		assertEquals("7", a.getDestination());
+		Arc a = GraphImporter.importer("./graphes/orig/g-10-1.txt", g);//("D:/graphes/orig/g-10-1.txt", g);
+		assertEquals("1-3(5), "
+				+ "10-3(3), 2-1(5), 2-3(5), 2-5(4), "
+				+ "3-4(4), 3-5(4), 4-10(1), 4-2(1), 4-7(3), "
+				+ "5-9(4), 6-2(3), 6-3(4), 7-3(2),"
+				+ " 8-2(4), 8-6(1), 9-2(4)",
+				g.toString());
+		assertEquals("5", a.getSource());
+		assertEquals("7", a.getDestination());
 	}
 
 	@Test

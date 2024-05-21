@@ -3,7 +3,6 @@ package main.java.graphe;
 import main.java.graphe.Interface.IGraphe;
 import main.java.graphe.dijkstra.Dijkstra;
 import main.java.graphe.tousGraphes.GraphImporter;
-//import main.java.graphe.tousGraphes.GrapheLArcs;
 import main.java.graphe.tousGraphes.GrapheLArcs;
 import main.java.graphe.tousGraphes.ListeAdj;
 import main.java.graphe.tousGraphes.arc.Arc;
@@ -22,7 +21,7 @@ public class Main {
 //
 //        System.out.println(g1);
 //        System.out.println(g2);
-//        GrapheLArcs graphe = new GrapheLArcs();
+//        main.java.graphe.tousGraphes.GrapheLArcs graphe = new main.java.graphe.tousGraphes.GrapheLArcs();
 //        graphe.ajouterArc("A", "B",4);
 //        graphe.ajouterArc("c", "d",5);
 //        graphe.ajouterArc("k", "r",8);
@@ -39,7 +38,7 @@ public class Main {
 //
 //        System.out.println(l);
 //
-//        GrapheLArcs l = new GrapheLArcs();
+//        main.java.graphe.tousGraphes.GrapheLArcs l = new main.java.graphe.tousGraphes.GrapheLArcs();
 //        l.peupler("A-C(2), A-D(1), "
 //                + "B-G(3), "
 //                + "C-H(2), "
@@ -61,8 +60,9 @@ public class Main {
 
 
 
-      IGraphe g = new GrapheLArcs();
-        Arc a = GraphImporter.importer("./graphes/full/g-301-1.txt", g);
+//      IGraphe g = new ListeAdj();
+        IGraphe g = new GrapheLArcs();
+        Arc a = GraphImporter.importer("./graphes/orig/g-10000-1.txt", g);
         long debut = System.nanoTime();
         Dijkstra.dijkstra(g, a.getSource(), distance, prev);
         long fin = System.nanoTime();
@@ -71,7 +71,7 @@ public class Main {
         System.out.println("dijkstra a dure " + (fin - debut)/1000000 + " millisecondes");
 
 
-//        GrapheLArcs l = new GrapheLArcs();
+//        main.java.graphe.tousGraphes.GrapheLArcs l = new main.java.graphe.tousGraphes.GrapheLArcs();
 //        l.peupler("A-C(2), A-D(1), "
 //                + "B-G(3), "
 //                + "C-H(2), "
@@ -86,7 +86,7 @@ public class Main {
 //
 ////        System.out.println(l);
 //
-//        GrapheLArcs graphe = new GrapheLArcs();
+//        main.java.graphe.tousGraphes.GrapheLArcs graphe = new main.java.graphe.tousGraphes.GrapheLArcs();
 //        graphe.peupler("A-C(2), A-D(1), "
 //                + "B-G(3), "
 //                + "C-H(2), "
