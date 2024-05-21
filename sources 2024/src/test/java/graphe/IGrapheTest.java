@@ -91,7 +91,7 @@ class IGrapheTest {
 	}
 
 	void petiteImporation(IGraphe g) {
-		Arc a = GraphImporter.importer("./graphes/barabasi/g-102-1.txt", g);//("D:/graphes/orig/g-10-1.txt", g);
+		Arc a = GraphImporter.importer("./graphes/full/g-101-1.txt", g);//("D:/graphes/orig/g-10-1.txt", g);
 //		assertEquals("1-3(5), "
 //				+ "10-3(3), 2-1(5), 2-3(5), 2-5(4), "
 //				+ "3-4(4), 3-5(4), 4-10(1), 4-2(1), 4-7(3), "
