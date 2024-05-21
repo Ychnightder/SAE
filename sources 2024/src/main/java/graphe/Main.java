@@ -60,8 +60,8 @@ public class Main {
 
 
 
-//      IGraphe g = new ListeAdj();
-        IGraphe g = new GrapheLArcs();
+      IGraphe g = new ListeAdj();
+//      IGraphe g = new GrapheLArcs();
         Arc a = GraphImporter.importer("./graphes/orig/g-10000-1.txt", g);
         long debut = System.nanoTime();
         Dijkstra.dijkstra(g, a.getSource(), distance, prev);
