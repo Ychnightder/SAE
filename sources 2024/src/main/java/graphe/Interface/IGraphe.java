@@ -42,52 +42,52 @@ public interface IGraphe extends IGrapheConst {
 
 	}
 
-	default HashMap<String, Integer> dijkstra(String source){
-		assert(this.getSommets().contains(source));
-		// choix du'une hashmap pour stocker le sommet et sa valuation
-		HashMap<String, Integer> tableau_dijkstra = new HashMap<String, Integer>();
-
-		List<String> liste_successeurs = this.getSucc(source);   // succ
-
-		String sommet_courant = liste_successeurs.get(0);  // 1er succ
-		String sommet_suivant = source;
-
-		int valuation_sommet_courant = getValuation(source, sommet_courant); // valeur 1er
-
-		int minimum = valuation_sommet_courant;  // valeur 1er aussi
-
-		String sommet_minimum = sommet_courant;  // sommet en string
-
-		//boucle pour parcourir les successeurs
-
-		for(int k=0; k < this.getSommets().size(); ++k) {
-
-			for (int i = 0; i < liste_successeurs.size(); ++i) {  // for succ
-
-				sommet_courant = liste_successeurs.get(i);  //  for Sc
-
-				valuation_sommet_courant = getValuation(sommet_suivant, sommet_courant); // valeur Sc
-
-				if (!tableau_dijkstra.containsKey(sommet_courant) || tableau_dijkstra.get(sommet_courant) >= valuation_sommet_courant) {
-					tableau_dijkstra.put(sommet_courant, valuation_sommet_courant);
-				} else if (tableau_dijkstra.get(sommet_courant) < tableau_dijkstra.get(sommet_suivant) + valuation_sommet_courant) {
-					tableau_dijkstra.put(sommet_courant, tableau_dijkstra.get(sommet_courant) + valuation_sommet_courant);
-				}
-
-			}
-			for (int compteur = 0; compteur < tableau_dijkstra.size(); ++compteur) {
-				if (tableau_dijkstra.get(compteur) < minimum) {
-					minimum = valuation_sommet_courant;
-					sommet_minimum = sommet_courant;
-				}
-			}
-			sommet_suivant = sommet_minimum;
-			liste_successeurs = this.getSucc(sommet_suivant);
-		}
-		return tableau_dijkstra;
-//		System.out.println(tableau_dijkstra);
-
-	}
+//	default HashMap<String, Integer> dijkstra(String source){
+//		assert(this.getSommets().contains(source));
+//		// choix du'une hashmap pour stocker le sommet et sa valuation
+//		HashMap<String, Integer> tableau_dijkstra = new HashMap<String, Integer>();
+//
+//		List<String> liste_successeurs = this.getSucc(source);   // succ
+//
+//		String sommet_courant = liste_successeurs.get(0);  // 1er succ
+//		String sommet_suivant = source;
+//
+//		int valuation_sommet_courant = getValuation(source, sommet_courant); // valeur 1er
+//
+//		int minimum = valuation_sommet_courant;  // valeur 1er aussi
+//
+//		String sommet_minimum = sommet_courant;  // sommet en string
+//
+//		//boucle pour parcourir les successeurs
+//
+//		for(int k=0; k < this.getSommets().size(); ++k) {
+//
+//			for (int i = 0; i < liste_successeurs.size(); ++i) {  // for succ
+//
+//				sommet_courant = liste_successeurs.get(i);  //  for Sc
+//
+//				valuation_sommet_courant = getValuation(sommet_suivant, sommet_courant); // valeur Sc
+//
+//				if (!tableau_dijkstra.containsKey(sommet_courant) || tableau_dijkstra.get(sommet_courant) >= valuation_sommet_courant) {
+//					tableau_dijkstra.put(sommet_courant, valuation_sommet_courant);
+//				} else if (tableau_dijkstra.get(sommet_courant) < tableau_dijkstra.get(sommet_suivant) + valuation_sommet_courant) {
+//					tableau_dijkstra.put(sommet_courant, tableau_dijkstra.get(sommet_courant) + valuation_sommet_courant);
+//				}
+//
+//			}
+//			for (int compteur = 0; compteur < tableau_dijkstra.size(); ++compteur) {
+//				if (tableau_dijkstra.get(compteur) < minimum) {
+//					minimum = valuation_sommet_courant;
+//					sommet_minimum = sommet_courant;
+//				}
+//			}
+//			sommet_suivant = sommet_minimum;
+//			liste_successeurs = this.getSucc(sommet_suivant);
+//		}
+//		return tableau_dijkstra;
+////		System.out.println(tableau_dijkstra);
+//
+//	}
 
 }
 

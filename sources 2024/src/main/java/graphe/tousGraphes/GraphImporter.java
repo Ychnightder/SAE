@@ -73,7 +73,7 @@ public class GraphImporter {
             }
             return a;
         } catch (FileNotFoundException e) {
-            throw new IllegalArgumentException("Pas de graphe dans " + file);
+            throw new IllegalArgumentException("Fichier non trouvé " + file);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("valuation incorrecte dans " + file);
         }

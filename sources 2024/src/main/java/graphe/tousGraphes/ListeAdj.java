@@ -84,7 +84,7 @@ public class ListeAdj extends Graphe {
     @Override
     public List<String> getSommets() {
        ArrayList listS = new ArrayList<>(this.ListAdj.keySet());
-//       listS.sort(null);
+        listS.sort(null);
         return listS;
     }
 
@@ -94,6 +94,7 @@ public class ListeAdj extends Graphe {
             return new ArrayList<>();
         }
         ArrayList listSucc = new ArrayList<>(this.ListAdj.get(sommet).keySet());
+        listSucc.sort(null);
         return listSucc;
     }
 

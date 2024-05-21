@@ -1,282 +1,71 @@
 package main.java.graphe.tousGraphes;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import main.java.graphe.tousGraphes.arc.Arc;
+
+import javax.print.attribute.standard.Destination;
+import java.util.*;
 
 
 public class GrapheLArcs extends Graphe {
+    private List<String> sommets;
+    private List<Arc> listeArc;
 
-    // ici la premiere classe a crée (mohamed qui a ecrit ça )
-    private List <Arc> arcs;
-    private List <String> sommet;
     public GrapheLArcs() {
-        arcs  = new ArrayList<>();
-        sommet = new ArrayList<>();
-        // la j'hesite a faire une class interne Arc et donc la cette partie marchera c'est pour verifier si deux sommets peuvent etre bon (mohamed)
+        sommets = new ArrayList<>();
+        listeArc = new ArrayList<>();
     }
 
 
-    @Override
-    public void ajouterArc (String source , String Dest , Integer Valeur ){
-        for (Arc Arc : arcs) {
-            if (source.equals(Arc.getSource()) && Dest.equals(Arc.getDest()) ||  Valeur <0) {
-                throw new IllegalArgumentException( "l'arc existe deja ");
-            }
-        }
-        arcs.add(new Arc( source , Dest , Valeur));
-    }
-    @Override
-    public String toString() {
-        StringBuilder sb  = new StringBuilder();
-        sort();
-        sortSommet();
-        boolean ajout = false;
-        int i=0;
-        int compteur_nombre_arcs = 0;
-        for(String noeud : getSommets()){
-            i=0;
-            ajout= false;
 
 
-            for(; i<arcs.size(); ++i ){
+@Override
+public String toString() {
+    StringBuilder sb  = new StringBuilder();
+    Collections.sort(sommets);
+    boolean ajout = false;
+    int i=0;
+    int compteur_nombre_arcs = 0;
+    for(String noeud : getSommets()){
+        i=0;
+        ajout= false;
 
-                if(arcs.get(i).sommet.compareTo(noeud) == 0){
+        for(; i<listeArc.size(); ++i ){
 
-                    sb.append(noeud);
-                    sb.append("-");
-                    sb.append(arcs.get(i).getDest());
-                    sb.append("(");
-                    sb.append(getValuation(arcs.get(i).sommet, arcs.get(i).succeseur));
-                    sb.append(")");
+            if(listeArc.get(i).getSource().compareTo(noeud) == 0){
 
-                    if( compteur_nombre_arcs <= arcs.size() )
-                        sb.append(", ");
-                    ajout=true;
-                    ++compteur_nombre_arcs;
-                }
-
-
-            }
-            if(!ajout){
                 sb.append(noeud);
-                sb.append(":");
-                if (compteur_nombre_arcs <= arcs.size() ) {
+                sb.append("-");
+                sb.append(listeArc.get(i).getDestination());
+                sb.append("(");
+                sb.append(getValuation(listeArc.get(i).getSource(), listeArc.get(i).getDestination()));
+                sb.append(")");
+
+                if( compteur_nombre_arcs <= listeArc.size() )
                     sb.append(", ");
-                }
+                ajout=true;
                 ++compteur_nombre_arcs;
-
             }
 
+
         }
-
-
-
-
-        return sb.toString();
-    }
-
-
-
-    @Override
-    public List<String> getSommets() {
-//        List <String> sommet = new ArrayList<String>();
-//        for (Arc Arc : arcs) {
-//              String source = Arc.getSource();
-//              String destination = Arc.getDest();
-//
-//              if (!sommet.contains(source)) {
-//                  sommet.add(new String(source));
-//              }
-//              if (!sommet.contains(destination)){
-//                  sommet.add(new String(destination));
-//              }
-//
-//
-//              System.out.println(Arc);
-//        }
-//
-//        return sommet ;
-        return sommet;
-    }
-    public int gettaillelistesommet (){
-        int t = getSommets().size(); ;
-        return t ;
-    }
-
-    /**
-     * @param sommet
-     * @return
-     */
-    @Override
-    public List<String> getSucc(String sommet) {
-        List<String>succ = new ArrayList<>();
-        for (Arc Arc : arcs) {
-            if (Arc.getSource().equals(sommet)) {
-                succ.add(new String(Arc.getDest()));
+        if(!ajout){
+            sb.append(noeud);
+            sb.append(":");
+            if (compteur_nombre_arcs <= listeArc.size() ) {
+                sb.append(", ");
             }
-        }
-        return succ;
-    }
-    public int  gettaillesucc (String sommet ){
-        return getSucc(sommet).size();
-    }
-
-    /**
-     * @param src
-     * @param dest
-     * @return
-     */
-    @Override
-    public int getValuation(String src, String dest)   {
-        for (Arc Arc : arcs) {
-            if (src.equals(Arc.getSource()) && dest.equals(Arc.getDest()) ) {
-                return Arc.getValeur() ;
-            }
-        }
-        throw new IllegalArgumentException("l'arc n'existe pas ");
-
-    }
-
-
-    /**
-     * @param src
-     * @param dest
-     * @return
-     */
-    @Override
-    public boolean contientArc(String src, String dest) {
-        for (Arc Arc : arcs) {
-            if (src.equals(Arc.getSource()) && dest.equals(Arc.getDest())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-
-
-
-    @Override
-    public void ajouterSommet(String noeud) {
-        if(!sommet.contains(noeud))
-            sommet.add(noeud);
-    }
-    @Override
-    public boolean contientSommet(String noeud) {
-        return sommet.contains(noeud);
-    }
-    @Override
-    public void oterSommet(String noeud) {
-        for(int i = 0; i<sommet.size(); ++i)
-            if(noeud.compareTo(sommet.get(i)) == 0) {
-                sommet.remove(i);
-                return;
-            }
-    }
-    @Override
-    public void oterArc(String source, String destination) throws IllegalArgumentException {
-        for(int i = 0; i < arcs.size(); ++i){
-            if(arcs.get(i).sommet.compareTo(source) == 0 && arcs.get(i).succeseur.compareTo(destination) == 0){
-                arcs.remove(i);
-                return;
-            }
+            ++compteur_nombre_arcs;
 
         }
-        throw new IllegalArgumentException();
-    }
-    public void sortSommet(){
-        Collections.sort(sommet);
+
     }
 
-    public void sort(){
-        ArrayList<Arc> liste_triee = new ArrayList<>();
-        Arc arc_min;
-
-        for (int i = 0; i< arcs.size(); ++i){
-
-            arc_min = arcs.get(i);
-
-            if(!liste_triee.contains(arc_min)){
-
-                for(Arc arc_verif : arcs){
-                    if(!arc_min.equals(arc_verif) && !liste_triee.contains(arc_verif)){
-
-                        if(arc_min.sommet.compareTo(arc_verif.getSource()) >=1){
-
-                            arc_min = arc_verif;
-
-                        }
-
-                        else if(arc_min.sommet.compareTo(arc_verif.getSource() )==0){
-
-                            if(arc_min.getDest().compareTo(arc_verif.getDest() )>=1){
-
-                                arc_min = arc_verif;
-
-
-                            }
-
-                        }
-                    }
-
-
-                }
-                liste_triee.add(arc_min);
-                i=0;
-            }
-        }
-
-        arcs = liste_triee;
-    }
-
-    public static class Arc {
-
-
-        private String sommet ;
-        private String succeseur ;
-        private int  Valeur;
-
-        public Arc (String Source , String Dest , int  Valeur) {
-            this.sommet = Source;
-            this.succeseur = Dest;
-            if (Valeur <0) {
-                throw new IllegalArgumentException("la valeur doit etre positive ");
-            }
-            else {
-                this.Valeur = Valeur;
-            }
-        }
-
-        public String getSource() {
-            return sommet  ;
-        }
-
-        public String getDest() {
-            return succeseur;
-        }
-
-        public int getValeur() {
-            return Valeur;
-        }
-
-        public boolean equals(Arc autre_arc){
-            return this.sommet == autre_arc.sommet && this.succeseur == autre_arc.succeseur;
-        }
-
-        @Override
-        public String toString() {
-            return "(" + sommet + ", " + succeseur + ")" + Valeur;
-        }
-    }
-    public int gettaille (){
-        int t = arcs.size();
-        return t ;
+    if (sb.length() > 0 && sb.charAt(sb.length() - 2) == ',') {
+        sb.delete(sb.length() - 2, sb.length());
     }
 
 
-
+    return sb.toString();
 }
 
 
@@ -286,3 +75,145 @@ public class GrapheLArcs extends Graphe {
 
 
 
+
+
+    @Override
+    public void ajouterSommet(String noeud) {
+        if (!sommets.contains(noeud)) {
+            sommets.add(noeud);
+        }
+    }
+
+
+    @Override
+    public void ajouterArc(String source, String destination, Integer valeur) {
+        if (valeur < 0) {
+            throw new IllegalArgumentException("La valuation ne peut pas être négative.");
+        }
+        if (!sommets.contains(source)) {
+            sommets.add(source);
+        }
+        if (!sommets.contains(destination)) {
+            sommets.add(destination);
+        }
+        if (contientArc(source, destination)) {
+            throw new IllegalArgumentException("L'arc  existe déjà");
+        }
+        if (!contientArc(source, destination)) {
+            Arc arc = new Arc(source, destination, valeur);
+            listeArc.add(arc);
+            listeArc.sort(Comparator.comparing(Arc::getSource).thenComparing(Arc::getDestination));
+        }
+
+
+
+    }
+
+
+
+
+    @Override
+    public void oterSommet(String noeud) {
+        if (sommets.contains(noeud)) {
+            sommets.remove(noeud);
+            listeArc.removeIf(arc -> arc.getSource().equals(noeud) || arc.getDestination().equals(noeud));
+
+        }
+    }
+
+    @Override
+    public void oterArc(String source, String destination) {
+        for(int i = 0; i < listeArc.size(); ++i){
+            if(listeArc.get(i).getSource().compareTo(source) == 0 && listeArc.get(i).getDestination().compareTo(destination) == 0){
+                listeArc.remove(i);
+                return;
+            }
+
+        }
+        throw new IllegalArgumentException();
+    }
+
+    @Override
+    public List<String> getSommets() {
+        return new ArrayList<>(sommets);
+    }
+
+    @Override
+    public List<String> getSucc(String sommet) {
+        List<String> successeurs = new ArrayList<>();
+        for (Arc arc : listeArc) {
+            if (arc.getSource().equals(sommet)) {
+                successeurs.add(arc.getDestination());
+            }
+        }
+
+        return successeurs;
+    }
+
+    @Override
+    public int getValuation(String src, String dest) {
+        for (Arc arc : listeArc) {
+        if (arc.getSource().equals(src) && arc.getDestination().equals(dest)) {
+            return arc.getValuation();
+        }
+    }
+       throw new IllegalArgumentException("L'arc n'existe pas ");
+    }
+
+    @Override
+    public boolean contientSommet(String sommet) {
+        return sommets.contains(sommet);
+    }
+
+    @Override
+    public boolean contientArc(String src, String dest) {
+        for (Arc Arc : listeArc) {
+            if (src.equals(Arc.getSource()) && dest.equals(Arc.getDestination())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+//    public void sort(){
+//        ArrayList<Arc> liste_triee = new ArrayList<>();
+//        Arc arc_min;
+//
+//        for (int i = 0; i< listeArc.size(); ++i){
+//
+//            arc_min = listeArc.get(i);
+//
+//            if(!liste_triee.contains(arc_min)){
+//
+//                for(Arc arc_verif : listeArc){
+//                    if(!arc_min.equals(arc_verif) && !liste_triee.contains(arc_verif)){
+//
+//                        if(arc_min.getSource().compareTo(arc_verif.getSource()) >=1){
+//
+//                            arc_min = arc_verif;
+//
+//                        }
+//
+//                        else if(arc_min.getSource().compareTo(arc_verif.getSource() )==0){
+//
+//                            if(arc_min.getDestination().compareTo(arc_verif.getDestination() )>=1){
+//
+//                                arc_min = arc_verif;
+//
+//
+//                            }
+//
+//                        }
+//                    }
+//
+//
+//                }
+//                liste_triee.add(arc_min);
+//                i=0;
+//            }
+//        }
+//
+//        listeArc = liste_triee;
+//    }
+}

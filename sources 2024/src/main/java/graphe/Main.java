@@ -1,6 +1,12 @@
 package main.java.graphe;
 
+import main.java.graphe.Interface.IGraphe;
+import main.java.graphe.dijkstra.Dijkstra;
+import main.java.graphe.tousGraphes.GraphImporter;
+//import main.java.graphe.tousGraphes.GrapheLArcs;
+import main.java.graphe.tousGraphes.GrapheLArcs;
 import main.java.graphe.tousGraphes.ListeAdj;
+import main.java.graphe.tousGraphes.arc.Arc;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +17,7 @@ public class Main {
     public static void main(String[] args) {
 //
 //
-//        GrapheLArcs.Arc g1  = new GrapheLArcs.Arc("A", "B",7),
-//                        g2 = new GrapheLArcs.Arc("B" , "C ", 8 );
+
 //
 //
 //        System.out.println(g1);
@@ -33,26 +38,71 @@ public class Main {
 //        l.ajouterArc("B", "B",18);
 //
 //        System.out.println(l);
+//
+//        GrapheLArcs l = new GrapheLArcs();
+//        l.peupler("A-C(2), A-D(1), "
+//                + "B-G(3), "
+//                + "C-H(2), "
+//                + "D-B(3), D-C(5), D-E(3), "
+//                + "E-C(1), E-G(3), E-H(7), "
+//                + "F:, "
+//                + "G-B(2), G-F(1), "
+//                + "H-F(4), H-G(2), "
+//                + "I-H(10), "
+//                + "J:");
+//        System.out.println(l);
+//
+//        Map<String, Integer> distance = new HashMap<>();
+//        Map<String, String> prev = new HashMap<>();
+//        HashMap<String, Integer> result = dijkstra(l, "A", distance, prev);
+//
+//        for (Map.Entry<String, Integer> entry : result.entrySet()) {
+//            System.out.println("Distance de A a " + entry.getKey() + " est " + entry.getValue());
+//        }
 
-        ListeAdj l = new ListeAdj();
-        l.peupler("A-C(2), A-D(1), "
-                + "B-G(3), "
-                + "C-H(2), "
-                + "D-B(3), D-C(5), D-E(3), "
-                + "E-C(1), E-G(3), E-H(7), "
-                + "F:, "
-                + "G-B(2), G-F(1), "
-                + "H-F(4), H-G(2), "
-                + "I-H(10), "
-                + "J:");
-        System.out.println(l);
 
+
+      IGraphe g = new GrapheLArcs();
+        Arc a = GraphImporter.importer("./graphes/orig/g-10-1.txt", g);
         Map<String, Integer> distance = new HashMap<>();
         Map<String, String> prev = new HashMap<>();
-        HashMap<String, Integer> result = dijkstra(l, "A", distance, prev);
-
-        for (Map.Entry<String, Integer> entry : result.entrySet()) {
-            System.out.println("Distance de A a " + entry.getKey() + " est " + entry.getValue());
+        Dijkstra.dijkstra(g, "1", distance, prev);
+        HashMap<String, Integer> result = dijkstra(g, "1", distance, prev);
+                for (Map.Entry<String, Integer> entry : result.entrySet()) {
+            System.out.println("Distance de 1 a " + entry.getKey() + " est " + entry.getValue());
         }
+        System.out.println(g);
+
+//        GrapheLArcs l = new GrapheLArcs();
+//        l.peupler("A-C(2), A-D(1), "
+//                + "B-G(3), "
+//                + "C-H(2), "
+//                + "D-B(3), D-C(5), D-E(3), "
+//                + "E-C(1), E-G(3), E-H(7), "
+//                + "F:, "
+//                + "G-B(2), G-F(1), "
+//                + "H-F(4), H-G(2), "
+//                + "I-H(10), "
+//                + "J:");
+//
+//
+////        System.out.println(l);
+//
+//        GrapheLArcs graphe = new GrapheLArcs();
+//        graphe.peupler("A-C(2), A-D(1), "
+//                + "B-G(3), "
+//                + "C-H(2), "
+//                + "J:,"
+//                + "D-B(3), D-C(5), D-E(3), "
+//                + "E-C(1), E-G(3), E-H(7), "
+//                + "F:, "
+//                + "G-B(2), G-F(1), "
+//                + "H-F(4), H-G(2), "
+//                + "I-H(10), "
+//                );
+//
+//        System.out.println(graphe);
+
+
     }
 }
