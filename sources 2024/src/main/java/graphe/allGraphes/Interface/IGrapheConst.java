@@ -1,4 +1,4 @@
-package main.java.graphe.Interface;
+package main.java.graphe.allGraphes.Interface;
 
 
 import java.util.ArrayList;

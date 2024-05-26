@@ -1,7 +1,4 @@
-package main.java.graphe.Interface;
-
-import java.util.HashMap;
-import java.util.List;
+package main.java.graphe.allGraphes.Interface;
 
 // ajouterSommet ne fait rien si un sommet est deja present
 // ajouterArc leve une IllegalArgumentException si l'arc est deja present

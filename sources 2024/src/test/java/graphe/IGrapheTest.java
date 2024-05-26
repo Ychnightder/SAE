@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import main.java.graphe.allGraphes.GrapheLArcs;
-import main.java.graphe.Interface.IGraphe;
+import main.java.graphe.allGraphes.Interface.IGraphe;
 import main.java.graphe.dijkstra.Dijkstra;
 import main.java.graphe.arc.Arc;
 import main.java.graphe.allGraphes.GraphImporter;

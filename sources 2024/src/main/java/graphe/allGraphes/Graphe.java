@@ -1,7 +1,7 @@
 package main.java.graphe.allGraphes;
 
 
-import main.java.graphe.Interface.IGraphe;
+import main.java.graphe.allGraphes.Interface.IGraphe;
 
 public abstract class Graphe implements IGraphe {
 	@Override

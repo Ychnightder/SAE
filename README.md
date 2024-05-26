@@ -38,7 +38,7 @@ Chaque nœud a une liste d'arcs sortants avec leurs poids respectifs.
 ```java
 package main.java.graphe.dijkstra;
 
-import main.java.graphe.Interface.IGraphe;
+import main.java.graphe.allGraphes.Interface.IGraphe;
 
 import java.util.*;
 
