@@ -1,4 +1,4 @@
-package main.java.graphe.tousGraphes;
+package main.java.graphe.allGraphes;
 
 import java.util.ArrayList;
 import java.util.Collections;

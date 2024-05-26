@@ -1,6 +1,6 @@
-package main.java.graphe.tousGraphes;
+package main.java.graphe.allGraphes;
 
-import main.java.graphe.tousGraphes.arc.Arc;
+import main.java.graphe.arc.Arc;
 
 import java.util.ArrayList;
 import java.util.Collections;

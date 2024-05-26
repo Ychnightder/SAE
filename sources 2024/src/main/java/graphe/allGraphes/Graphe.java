@@ -1,4 +1,4 @@
-package main.java.graphe.tousGraphes;
+package main.java.graphe.allGraphes;
 
 
 import main.java.graphe.Interface.IGraphe;

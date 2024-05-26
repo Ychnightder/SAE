@@ -1,4 +1,4 @@
-package main.java.graphe.tousGraphes.arc;
+package main.java.graphe.arc;
 
 public class ArcX extends Arc {
     public ArcX(String source) {

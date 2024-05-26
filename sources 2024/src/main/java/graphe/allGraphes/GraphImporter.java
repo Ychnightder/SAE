@@ -1,8 +1,8 @@
-package main.java.graphe.tousGraphes;
+package main.java.graphe.allGraphes;
 
 
 import main.java.graphe.Interface.IGraphe;
-import main.java.graphe.tousGraphes.arc.Arc;
+import main.java.graphe.arc.Arc;
 
 import java.io.File;
 import java.io.FileNotFoundException;

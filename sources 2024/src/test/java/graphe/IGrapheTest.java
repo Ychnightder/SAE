@@ -11,13 +11,13 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import main.java.graphe.tousGraphes.GrapheLArcs;
+import main.java.graphe.allGraphes.GrapheLArcs;
 import main.java.graphe.Interface.IGraphe;
 import main.java.graphe.dijkstra.Dijkstra;
-import main.java.graphe.tousGraphes.arc.Arc;
-import main.java.graphe.tousGraphes.GraphImporter;
-import main.java.graphe.tousGraphes.GrapheMAdj;
-import main.java.graphe.tousGraphes.ListeAdj;
+import main.java.graphe.arc.Arc;
+import main.java.graphe.allGraphes.GraphImporter;
+import main.java.graphe.allGraphes.GrapheMAdj;
+import main.java.graphe.allGraphes.ListeAdj;
 import org.junit.jupiter.api.Test;
 
 class IGrapheTest {
