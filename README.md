@@ -95,4 +95,18 @@ class Node implements Comparable<Node> {
 
 <hr>
 
+### Dijkstra TEST 
 
+#### GrapheLArcs
+DorogovtsevMendes jusqu'a 10 000
+
+Barabasi jusqu'a 10 002
+
+Full-Connected jusqu'a 101
+
+#### GrapheLAdj
+DorogovtsevMendes jusqu'a 1 000 000 
+
+Barabasi jusqu'a 1 000 002
+
+Full-Connected jusqu'a 1001
