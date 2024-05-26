@@ -51,24 +51,26 @@ public class Main {
 //                + "J:");
 //        System.out.println(l);
 //
-       Map<String, Integer> distance = new HashMap<>();
-       Map<String, String> prev = new HashMap<>();
+
+
+
+//              IGraphe g = new ListeAdj();
+//
+//        Map<String, Integer> distance = new HashMap<>();
+//        Map<String, String> prev = new HashMap<>();
+//        Arc a = GraphImporter.importer("./graphes/full/g-501-1.txt", g);
+//        long debut = System.nanoTime();
+//        Dijkstra.dijkstra(g, a.getSource(), distance, prev);
+//        long fin = System.nanoTime();
+//        HashMap<String, Integer> result = dijkstra(g, a.getSource(), distance, prev);
+
+
 //
 //        for (Map.Entry<String, Integer> entry : result.entrySet()) {
-//            System.out.println("Distance de A a " + entry.getKey() + " est " + entry.getValue());
+//            System.out.println("Distance de " + a.getSource().toString() + "" + entry.getKey() + "" + entry.getValue());
 //        }
+//        System.out.println("dijkstra a dure " + (fin - debut)/1000000 + " millisecondes");
 
-
-
-      IGraphe g = new ListeAdj();
-//      IGraphe g = new GrapheLArcs();
-        Arc a = GraphImporter.importer("./graphes/orig/g-10000-1.txt", g);
-        long debut = System.nanoTime();
-        Dijkstra.dijkstra(g, a.getSource(), distance, prev);
-        long fin = System.nanoTime();
-        HashMap<String, Integer> result = dijkstra(g, a.getSource(), distance, prev);
-
-        System.out.println("dijkstra a dure " + (fin - debut)/1000000 + " millisecondes");
 
 
 //        main.java.graphe.tousGraphes.GrapheLArcs l = new main.java.graphe.tousGraphes.GrapheLArcs();

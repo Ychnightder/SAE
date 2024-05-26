@@ -31,7 +31,6 @@ public String toString() {
         for(; i<listeArc.size(); ++i ){
 
             if(listeArc.get(i).getSource().compareTo(noeud) == 0){
-
                 sb.append(noeud);
                 sb.append("-");
                 sb.append(listeArc.get(i).getDestination());
@@ -44,8 +43,6 @@ public String toString() {
                 ajout=true;
                 ++compteur_nombre_arcs;
             }
-
-
         }
         if(!ajout){
             sb.append(noeud);
