@@ -1,5 +1,15 @@
 package main.java.graphe;
 
+import main.java.graphe.Interface.IGraphe;
+import main.java.graphe.allGraphes.GraphImporter;
+import main.java.graphe.allGraphes.GrapheLArcs;
+import main.java.graphe.allGraphes.ListeAdj;
+import main.java.graphe.arc.Arc;
+import main.java.graphe.dijkstra.Dijkstra;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
 //
@@ -42,15 +52,6 @@ public class Main {
 
 
 
-//              IGraphe g = new ListeAdj();
-//
-//        Map<String, Integer> distance = new HashMap<>();
-//        Map<String, String> prev = new HashMap<>();
-//        Arc a = GraphImporter.importer("./graphes/full/g-501-1.txt", g);
-//        long debut = System.nanoTime();
-//        Dijkstra.dijkstra(g, a.getSource(), distance, prev);
-//        long fin = System.nanoTime();
-//        HashMap<String, Integer> result = dijkstra(g, a.getSource(), distance, prev);
 
 
 //
@@ -90,6 +91,21 @@ public class Main {
 //                );
 //
 //        System.out.println(graphe);
+
+        Map<String, Integer> distance = new HashMap<>();
+        Map<String, String> prev = new HashMap<>();
+        IGraphe g = new ListeAdj();
+
+
+       Arc a = GraphImporter.importer("./graphes/full/g-1001-1.txt", g);
+       long debut = System.nanoTime();
+       Dijkstra.dijkstra(g, a.getSource(), distance, prev);
+       long fin = System.nanoTime();
+       System.out.println("dijkstra a dure " + (fin - debut)/1000000 + " millisecondes");
+
+
+
+
 
 
     }

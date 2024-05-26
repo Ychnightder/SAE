@@ -4,6 +4,7 @@
 L'objectif du projet était de créer une application Java pour manipuler des
 graphes orientés valués et déterminer le plus court chemin entre des stations
 du métro parisien.
+<hr>
 
 ### Membres de l'équipe
 -     BATIKH Mohamed
@@ -12,23 +13,23 @@ du métro parisien.
 -     PIERRE Ychnightder
 -     RONSIN Jade
 
+<hr>
+
 ## Structure du projet
 
 ### Partie I : Représentation des graphes
+###### Les classe qui on été Code :  
 
 #### GrapheLArcs
 Cette classe représente un graphe à l'aide d'une liste d'arcs. 
 Chaque arc connecte deux nœuds avec un poids spécifié. 
 Les nœuds sont identifiés par des entiers de 1 à n.
 
-#### GrapheMAdj
-Cette classe représente un graphe à l'aide d'une matrice d'adjacence.
-Il s'agit d'un tableau 2D où la cellule à la ligne i et la colonne j
-représente le poids de l'arc du nœud i au nœud j.
-
 #### GrapheLAdj
 Cette classe représente un graphe à l'aide de listes d'adjacence. 
 Chaque nœud a une liste d'arcs sortants avec leurs poids respectifs.
+
+<hr>
 
 ### Partie II : Algorithme du plus court chemin de Dijkstra et étude comparative
 
@@ -90,3 +91,8 @@ class Node implements Comparable<Node> {
         return Integer.compare(this.distance, autre.distance);
     }
 }
+```
+
+<hr>
+
+
